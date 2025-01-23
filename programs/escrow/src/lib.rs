@@ -1,15 +1,15 @@
+use crate::Escrow;
 use anchor_lang::prelude::*;
 
 declare_id!("4HYm6NXVJS3tmzvpGfnq55kpNbGtm4KeD7pRxiShHXWV");
 
 mod instructions;
-use instructions::*;
-
+pub use instructions::*;
 mod state;
 use state::*;
 
 #[program]
-pub mod escrow {
+pub mod anchor_escrow {
     use super::*;
 
     pub fn make(ctx: Context<Make>, seed: u64, deposit: u64, receive: u64) -> Result<()> {
@@ -21,4 +21,4 @@ pub mod escrow {
 }
 
 #[derive(Accounts)]
-pub struct Make {}
+pub struct Initialize {}
