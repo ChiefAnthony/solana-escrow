@@ -17,8 +17,8 @@ pub struct Take<'info> {
     pub mint_a: InterfaceAccount<'info, Mint>,
     pub mint_b: InterfaceAccount<'info, Mint>,
     #[account(
-        init,
-        // init_if_needed,
+        // init,
+        init_if_needed,
         payer = taker,
         associated_token::mint = mint_a,
         associated_token::authority = taker
@@ -31,8 +31,8 @@ pub struct Take<'info> {
     )]
     pub taker_ata_b: InterfaceAccount<'info, TokenAccount>,
     #[account(
-        init,
-        // init_if_needed,
+        // init,
+        init_if_needed,
         payer = taker,
         associated_token::mint = mint_b,
         associated_token::authority = maker
@@ -41,7 +41,7 @@ pub struct Take<'info> {
     #[account(
         mut,
         close = maker,
-        has_one = maker,
+        // has_one = maker,
         has_one = mint_a,
         has_one = mint_b,
         seeds = [b"escrow", maker.key().as_ref(), escrow.seed.to_le_bytes().as_ref()],
